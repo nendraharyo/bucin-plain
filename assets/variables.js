@@ -15,6 +15,7 @@ const variables = {
   ],
   nicknames: ["Reyrey","Raisma","Reyyyy", "Reybit", "Rai"],
   generated: ["{greetings}, {nicknames}!"],
+  photos:["foto1","foto2","foto3","foto4","foto5","foto6","foto7","foto8","foto9","foto10","foto11","foto12","foto13","foto14","foto15","foto16"],
 };
 
 const particlesConfig = {
@@ -34,9 +35,6 @@ const particlesConfig = {
       stroke: {
         width: 2,
         color: "#000000",
-      },
-      polygon: {
-        nb_sides: 5,
       },
       image: {
         src: "./assets/heart.png",
@@ -65,10 +63,10 @@ const particlesConfig = {
       },
     },
     line_linked: {
-      enable: true,
+      enable_auto: false,
       distance: 80,
       color: "#000",
-      opacity: 0.4,
+      opacity: 0,
       width: 1,
     },
     move: {

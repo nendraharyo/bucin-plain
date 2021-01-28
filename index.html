@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>{{ documentTitle }}</title>
+    <title>Halaman Bucin Mania</title>
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -34,26 +34,62 @@
     />
     <!-- User Style -->
     <link href="assets/css/style.css" rel="stylesheet" />
-    <style></style>
-  </head>
-
-  <body>
-    <div id="bg">
-      <div id="particles-js"></div>
-      <div class="container">
-        <div class="text-container">
-          <h1 id="greeting"></h1>
-          <h4 id="quotes"></h4>
-          <em id="quotes-author" class="text-muted"></em>
-        </div>
-      </div>
-    </div>
-
     <!-- JQuery -->
     <script
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
     ></script>
+    <script type="text/javascript" src="assets/variables.js"></script>
+    <script type="text/javascript" src="assets/js/functions.js"></script>
+    <style></style>
+  </head>
+
+  <body>
+
+    <script>
+      var chck=0;
+      var rand="";
+      let photos=variables.photos;
+      window.onload = choosePic;
+      mySounds = [ 'sound1', 'sound2', 'sound3', 'sound4', 'sound5' ]
+      function randomSound() {
+        if(chck==0){
+          var index = Math.floor(Math.random() * mySounds.length);
+          var id = mySounds[index];
+          rand=id;
+          var audioElement = document.getElementById(id);
+          audioElement.play();
+          chck=1;
+        }
+        
+        else {
+          var audioElement = document.getElementById(rand);
+          audioElement.pause();
+          audioElement.src=audioElement.src;
+          chck=0;
+        };
+        };
+      function choosePic() {
+            var randomNum = Math.floor(Math.random() * photos.length);
+            document.getElementById("myPicture").src = "photos/"+photos[randomNum]+".jpg"};
+    </script>
+    <div id="bg">
+      <div id="particles-js" onclick="randomSound()"></div>
+      <div class="container">
+        <div class="polaroid">
+          <img src="photos/foto1.jpg" width=210 height=350 id="myPicture" alt="fotopokoknya">
+          <div class="containerp">
+          <p id="paragraf"></p>
+          </div>
+        </div>
+        <div class="text-container">
+          <h1 id="greeting"></h1>
+          <h4 id="quotes"></h4>
+          <p id="surprise"></p>
+          <em id="quotes-author" class="text-muted"></em>
+        </div>
+      </div>
+    </div>
     <!-- Bootstrap tooltips -->
     <script
       type="text/javascript"
@@ -79,8 +115,7 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/typeit@6.1.1/dist/typeit.min.js"
     ></script>
-    <script type="text/javascript" src="assets/variables.js"></script>
-    <script type="text/javascript" src="assets/js/functions.js"></script>
+
     <script>
       const greetText = variables.greetings[getTime()];
       const nickText = random(variables.nicknames);
@@ -100,7 +135,14 @@
         particlesJS("particles-js", particlesConfig, function () {
           console.log("callback - particles.js config loaded");
         });
+        generateTypeIt("#surprise", 150, false, "Tap to play Music!")
       });
     </script>
+        <audio id="sound1" src="music/musik.mp3" type="audio/mpeg">
+          <audio id="sound2" src="music/musik1.mp3" type="audio/mpeg">
+          <audio id="sound3" src="music/musik2.mp3" type="audio/mpeg">
+          <audio id="sound4" src="music/musik3.mp3" type="audio/mpeg">
+          <audio id="sound5" src="music/musik4.mp3" type="audio/mpeg">
+      
   </body>
 </html>
